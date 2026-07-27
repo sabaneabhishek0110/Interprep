@@ -80,7 +80,7 @@ export async function signIn(params: SignInParams) {
 
     await setSessionCookie(idToken);
   } catch (error: any) {
-    console.log("");
+    console.error("SignIn error:", error);
 
     return {
       success: false,
