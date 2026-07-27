@@ -18,7 +18,7 @@ export async function createFeedback(params: CreateFeedbackParams) {
       .join("");
 
     const { object } = await generateObject({
-      model: google("gemini-2.0-flash-001", {
+      model: google("gemini-3.5-flash", {
         structuredOutputs: false,
       }),
       schema: feedbackSchema,
@@ -117,6 +117,7 @@ if (!interviewId || !userId) {
 export async function getLatestInterviews(
   params: GetLatestInterviewsParams
 ): Promise<Interview[]> {
+  console.log("NEW getLatestInterviews is running");
   const { userId, limit = 20 } = params;
 
   const snapshot = await db
